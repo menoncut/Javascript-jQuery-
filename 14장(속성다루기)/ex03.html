@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>속성값 설정-1(attr())</title>
+    <style></style>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <img src="../book/14장(속성다루기)/예제소스/images/cat.png" id="image" />
+  </body>
+  <script>
+    $(function () {
+      let $img = $("#image");
+      let flag = false; //flag변수
+
+      $img.click(function () {
+        flag = !flag;
+
+        if (flag) {
+          $img.attr("src", "../book/14장(속성다루기)/예제소스/images/dog.png");
+        } else {
+          $img.attr("src", "../book/14장(속성다루기)/예제소스/images/cat.png");
+        }
+      });
+    });
+  </script>
+</html>

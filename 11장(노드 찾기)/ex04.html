@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>노드 다루기-eq(), get()의 차이</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+    <style>
+      div {
+        width: 50px;
+        height: 50px;
+        float: left;
+        background-color: brown;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+  </body>
+  <script>
+    $(function () {
+      //div가 5개 생성되고 div객체들을 배열로 저장하고 있다.
+      let $divList = $("div");
+      //배열은 0부터 시작을 하니 인덱스가 1이라면 2번째의 div만 가져오고 있다.
+      let $div_two = $divList.eq(1); //eq는 객체를 리턴(css 사용가능)
+      let $div_one = $divList.get(0); //get은 element를 리턴(자바스크립트의 style 사용가능)
+      //[]로 인덱스를 주어 노드를 찾아서 다룰 수 있다.(get처럼 element를 리턴)
+      let $div_five = $divList[4];
+      //3가지의 방법 중에서 eq()를 추천한다.
+      $div_two.css("background", "blue");
+      $div_one.style.border = "3px solid red";
+      $div_five.style.background = "yellow";
+    });
+  </script>
+</html>

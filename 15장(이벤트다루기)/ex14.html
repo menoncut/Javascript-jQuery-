@@ -1,0 +1,59 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!DOCTYPE html>
+    <title>mouseover / mouseout의 예제</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+    <style>
+      #parent {
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        left: 200px;
+        top: 100px;
+        background-color: red;
+      }
+      #child {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">이벤트 정보 출력</div>
+    <div id="parent">
+      parent
+      <div id="child">child</div>
+    </div>
+  </body>
+  <script>
+    //전역변수초기화
+    let cnt = 0;
+    let $info = null;
+    let $child = null;
+    $(function () {
+      $info = $("#info");
+      $child = $("#child");
+
+      //parent가 mouseover,mouseout 이벤트를 등록 해두었는데 parent영역에만 올리면
+      //정상적인 값이 출력이 되지만, child영역에 mouseover를 하니 parent.out, child.over
+      //가 동시에 출력이 된다.
+      //mouseover,mouseout 이벤트는 부모노드와 자식노드는 별개이면서 자식노드는 독립적
+      //인 노드로 판단해서 이벤트가 발생한다.
+      $("#parent").mouseover(function (e) {
+        cnt++;
+        $info.html($info.html() + "<br>" + cnt + ", " + e.target.id + ".over");
+      });
+
+      $("#parent").mouseout(function (e) {
+        cnt++;
+        $info.html($info.html() + "<br>" + cnt + ", " + e.target.id + ".out");
+      });
+    });
+  </script>
+</html>

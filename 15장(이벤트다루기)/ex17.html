@@ -1,0 +1,85 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!DOCTYPE html>
+    <title>mouseenter / mouseleave를 이용한 문제점 해결</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+    <style>
+      #parent {
+        width: 300px;
+        height: 100px;
+        position: absolute;
+        left: 200px;
+        top: 100px;
+        background-color: red;
+        border: 2px solid black;
+        overflow: hidden;
+      }
+      #child {
+        border: 2px solid black;
+        width: 100px;
+        height: 200px;
+        position: absolute;
+        left: 100px;
+        top: 0px;
+        background-color: white;
+      }
+      #child div {
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        align-content: center;
+      }
+      #child2 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="info">이벤트 정보 출력</div>
+    <div id="parent">
+      parent
+      <div id="child">
+        <div id="child1">out</div>
+        <div id="child2">over</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //전역변수초기화
+    let cnt = 0;
+    let $info = null;
+    let $child = null;
+    $(function () {
+      $info = $("#info");
+      $child = $("#child");
+
+      //ex15에서 생긴 문제점을 해결하기위해서는 mouseover / mouseout대신에
+      //mouseenter / mouseleave 를 사용하면 문제점을 해결하였다.
+      //이러한 이유로 실무에서는 메뉴 UI컨텐츠를 제작할 때는 mouseenter / mouseleave이벤트
+      //를 사용한다.
+      $("#parent").mouseenter(function (e) {
+        cnt++;
+        $info.html($info.html() + "<br>" + cnt + ", " + e.target.id + ".over");
+        $child.animate(
+          {
+            top: -100,
+          },
+          300
+        );
+      });
+
+      $("#parent").mouseleave(function (e) {
+        cnt++;
+        $info.html($info.html() + "<br>" + cnt + ", " + e.target.id + ".out");
+        $child.animate(
+          {
+            top: 0,
+          },
+          300
+        );
+      });
+    });
+  </script>
+</html>
