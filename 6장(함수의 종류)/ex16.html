@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜백함수-6(일반함수 풀이)</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+    <style>
+      .tab-menu {
+        list-style: none;
+        height: 80px;
+      }
+      .tab-menu li {
+        width: 100px;
+        height: 40px;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        /*float: left;*/
+      }
+      .tab-menu li > img:hover {
+        position: absolute;
+        /*top: -40px;*/
+      }
+      /*.tab-menu li > img:active {
+        position: absolute;
+        top: -80px;
+      }*/
+      /*#im1.active {
+        /*position: absolute;
+        top: -80px;
+        background-color: #f00;
+      }*/
+      #menuitem1.active1 {
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="tab-menu" id="tabmenu1">
+      <li id="menuitem1">
+        <img
+          src="../book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.1.png"
+          id="im1"
+        />
+      </li>
+      <li id="menuitem2">
+        <img
+          src="./book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.2.png"
+          id="im2"
+        />
+      </li>
+      <li id="menuitem3">
+        <img
+          src="./book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.3.png"
+          id="im3"
+        />
+      </li>
+      <li id="menuitem4">
+        <img
+          src="./book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.4.png"
+          id="im4"
+        />
+      </li>
+      <li id="menuitem5">
+        <img
+          src="./book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.5.png"
+          id="im5"
+        />
+      </li>
+      <li id="menuitem6">
+        <img
+          src="./book/교안 및 예제소스/예제소스/6장(함수의 종류)/images/newbtn.bar.6.png"
+          id="im6"
+        />
+      </li>
+    </ul>
+    <div>선택한 인덱스 값 : <span id="info"></span></div>
+  </body>
+  <script>
+    $(function () {
+      $("#im1").hover(function () {
+        $("#im1").css({
+          top: "-40px",
+        });
+        $("#menuitem1").css({
+          height: "40px",
+        });
+      });
+
+      $("#im1").on({
+        click: function () {
+          $(this).addClass("active");
+          $("#menuitem1").addClass("active1");
+          $(this).css({
+            position: "absolute",
+            top: "-80px",
+          });
+          $("#menuitem1").css({
+            height: "80px",
+          });
+          $("#im1").css({
+            top: "-80px",
+          });
+        },
+        /*mouseleave: function () {
+          $("#menuitem1").css({
+            height: "80px",
+          });
+          $("#im1").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },*/
+      });
+
+      $("#im2").hover(function () {
+        $("#im2").css({
+          top: "-40px",
+        });
+        $("#menuitem2").css({
+          height: "40px",
+        });
+      });
+
+      $("#im2").on({
+        click: function () {
+          $("#menuitem2").css({
+            height: "80px",
+          });
+          $("#im2").css({
+            top: "-80px",
+          });
+        },
+        mouseleave: function () {
+          $("#menuitem2").css({
+            height: "80px",
+          });
+          $("#im2").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },
+      });
+
+      $("#im3").hover(function () {
+        $("#im3").css({
+          top: "-40px",
+        });
+        $("#menuitem3").css({
+          height: "40px",
+        });
+      });
+
+      $("#im3").on({
+        click: function () {
+          $("#menuitem3").css({
+            height: "80px",
+          });
+          $("#im3").css({
+            top: "-80px",
+          });
+        },
+        mouseleave: function () {
+          $("#menuitem3").css({
+            height: "80px",
+          });
+          $("#im3").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },
+      });
+
+      $("#im4").hover(function () {
+        $("#im4").css({
+          top: "-40px",
+        });
+        $("#menuitem4").css({
+          height: "40px",
+        });
+      });
+
+      $("#im4").on({
+        click: function () {
+          $("#menuitem4").css({
+            height: "80px",
+          });
+          $("#im4").css({
+            top: "-80px",
+          });
+        },
+        mouseleave: function () {
+          $("#menuitem4").css({
+            height: "80px",
+          });
+          $("#im4").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },
+      });
+
+      $("#im5").hover(function () {
+        $("#im5").css({
+          top: "-40px",
+        });
+        $("#menuitem5").css({
+          height: "40px",
+        });
+      });
+
+      $("#im5").on({
+        click: function () {
+          $("#menuitem5").css({
+            height: "80px",
+          });
+          $("#im5").css({
+            top: "-80px",
+          });
+        },
+        mouseleave: function () {
+          $("#menuitem5").css({
+            height: "80px",
+          });
+          $("#im5").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },
+      });
+
+      $("#im6").hover(function () {
+        $("#im6").css({
+          top: "-40px",
+        });
+        $("#menuitem6").css({
+          height: "40px",
+        });
+      });
+
+      $("#im6").on({
+        click: function () {
+          $("#menuitem6").css({
+            height: "80px",
+          });
+          $("#im6").css({
+            top: "-80px",
+          });
+        },
+        mouseleave: function () {
+          $("#menuitem6").css({
+            height: "80px",
+          });
+          $("#im6").css({
+            position: "absolute",
+            top: "-80px",
+          });
+        },
+      });
+    });
+  </script>
+</html>

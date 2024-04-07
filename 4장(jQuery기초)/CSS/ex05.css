@@ -1,0 +1,17 @@
+.hello {
+  position: relative;
+  background: url(../Universe\ Image.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 700px;
+  height: 500px;
+}
+.hello .text {
+  position: absolute;
+  bottom: 0;
+  color: brown;
+  font-family: Verdana !important;
+  font-size: 50pt;
+  font-weight: bold;
+  text-shadow: 0 0 5px #000;
+}

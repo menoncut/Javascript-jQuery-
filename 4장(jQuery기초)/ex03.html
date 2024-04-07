@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지구본 움직이기</title>
+    <!-- CDN방식-인터넷이 연결이 되는 곳에서만 아래코드가 적용 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="CSS/ex03.css" />
+  </head>
+  <body>
+    <div id="panel">
+      <div id="bar"></div>
+      <img src="Universe Image.jpg" id="univ" />
+    </div>
+    <div id="btn">
+      <button id="btnStart">은하 움직이기</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        //은하이미지 웹요소(노드) 찾아서 저장
+        var $univ = $("#univ");
+        //버튼에 이벤트 등록.(5초만에 left값 470px으로 설정하는 것이
+        //곧 마치 움직이는 애니메이션 형태가 된다.)
+        //버튼을 클릭하면 콜백함수가 실행된다.
+        $("#btnStart").click(function () {
+          $univ.animate(
+            {
+              left: "470px",
+            },
+            1000
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

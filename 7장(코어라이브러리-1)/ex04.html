@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지구본 게임</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+    <style>
+      .container {
+        width: 600px;
+        height: 500px;
+        position: relative;
+        border: 3px solid red;
+      }
+      .container #gigu {
+        width: 50px;
+        margin-left: 250px;
+        margin-top: 150px;
+      }
+      #score {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      #text {
+        font-size: 30px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="text">현재 점수 <span id="score">0</span></div>
+    <div class="container">
+      <img src="gigu.png" id="gigu" />
+    </div>
+  </body>
+  <script>
+    //지구본을 클릭하면 점수가 변하도록 만든다. 단, setTimeout()사용하여
+    //5초후 종료한다.
+
+    $(function () {
+      //점수 저장 변수
+      let cnt = 0;
+      //점수 출력 부분
+      let $score = $("#score");
+      //플래그 변수(어떠한 조건이 되면 코드를 실행을 시키고, 조건이 되지
+      //않으면 코드를 실행 시키지 않는 변수)
+      let play = true;
+
+      $("#gigu").click(function () {
+        //점수가 증가
+        if (play == true) {
+          cnt++;
+          $score.html(cnt);
+        }
+      });
+      //게임을 5초 후에 종료
+      setTimeout(function () {
+        play = false;
+        alert("게임이 종료되었습니다.");
+      }, 5000);
+    });
+  </script>
+</html>
