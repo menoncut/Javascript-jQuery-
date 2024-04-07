@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOMLoaded Event와 Window의 load이벤트의 차이점</title>
+    <script src="../lib/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <img
+      src="../book/제10장(jQeury 소개)/예제소스/images/gigu.png"
+      id="image"
+    />
+  </body>
+  <script>
+    //ready()함수는 외부 이미지나 컨텐츠를 다 로딩이 안되고 DOM객체가 생성된 후 이벤트가 발생
+    //$(document).ready(function(){
+    //    let $image = $("#image");
+    //    console.log("이미지의 너비 : " + $image.width());
+    //})
+    //window.onload이벤트는 외부 이미지나 컨텐츠를 다 로딩이 된 후 발생하는 이벤트
+    window.onload = function () {
+      let $image = $("#image");
+      console.log("이미지의 너비 : " + $image.width());
+    };
+  </script>
+</html>
